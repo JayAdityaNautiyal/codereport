@@ -12,14 +12,14 @@ export default async function handler(req, res) {
     const collection = db.collection("reports");
     
     const api = new ChatGPTAPI({
-      apiKey: "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",
+      apiKey: "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",
     });
 
     for (const filepath of req.body.head_commit.modified) {
       const url = `https://raw.githubusercontent.com/${req.body.repository.owner.name}/${req.body.repository.name}/main/${filepath}`;
-      console.log("url = ", url)
+      // console.log("url = ", url)
       const response = await axios.get(url);
-      console.log("response = ", response)
+      // console.log("response = ", response)
 
       const content = response.data;
       const decodedContent = Buffer.from(content, "base64").toString("utf-8");
