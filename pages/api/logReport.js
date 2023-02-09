@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     const collection = db.collection("reports");
     
     const api = new ChatGPTAPI({
-      apiKey: "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",
+      apiKey: "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",
     });
 
     for (const filepath of req.body.head_commit.modified) {
