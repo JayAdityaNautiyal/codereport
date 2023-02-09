@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const collection = db.collection("reports");
 
     const api = new ChatGPTAPI({
-      apiKey: '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'
+      apiKey: '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'
     })
     // console.log(req.body)
     // console.log(JSON.stringify(req.body.head_commit))
