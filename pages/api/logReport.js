@@ -18,7 +18,6 @@ export default async function handler(req, res) {
     for (const filepath of req.body.head_commit.modified) {
       const url = `https://raw.githubusercontent.com/${req.body.repository.owner.name}/${req.body.repository.name}/main/${filepath}`;
       const response = await axios.get(url);
-      // console.log("response = ", response)
 
       const content = response.data;
       const decodedContent = Buffer.from(content, "base64").toString("utf-8");
