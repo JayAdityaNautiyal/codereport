@@ -17,7 +17,6 @@ export default async function handler(req, res) {
 
     for (const filepath of req.body.head_commit.modified) {
       const url = `https://raw.githubusercontent.com/${req.body.repository.owner.name}/${req.body.repository.name}/main/${filepath}`;
-      // console.log("url = ", url)
       const response = await axios.get(url);
       // console.log("response = ", response)
 
