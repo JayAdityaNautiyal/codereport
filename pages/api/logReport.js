@@ -10,9 +10,9 @@ export default async function handler(req, res) {
     console.log("Connected to mongo");
     const db = client.db();
     const collection = db.collection("reports");
-    
+    console.log("api key " , process.env.NEXT_PUBLIC_OPENAI_API_KEY)
     const api = new ChatGPTAPI({
-      apiKey: "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",
+      apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
     });
 
     for (const filepath of req.body.head_commit.modified) {
