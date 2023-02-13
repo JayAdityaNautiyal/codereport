@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     console.log("api key " , process.env.NEXT_PUBLIC_OPENAI_API_KEY)
     const api = new ChatGPTAPI({
       apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-      completionParams: { model:"text-davinci-003" , max_tokens:4000}
+      completionParams: { model:"text-davinci-003" , max_tokens:3000}
     });
 
     for (const filepath of req.body.head_commit.modified) {
