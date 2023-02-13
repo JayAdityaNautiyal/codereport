@@ -23,7 +23,7 @@ export default async function handler(req, res) {
       const content = response.data;
       const decodedContent = Buffer.from(content, "base64").toString("utf-8");
       const resp = await api.sendMessage(
-        `Tell me the quality of this code : ${decodedContent}`
+        `code quality of this code written in js : ${decodedContent}`
       );
       console.log("chat gpt output", resp.text);
       await collection.insertOne({ output: resp.text });
