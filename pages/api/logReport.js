@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     console.log("api key " , process.env.NEXT_PUBLIC_OPENAI_API_KEY)
     const api = new ChatGPTAPI({
       apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-      completionParams: { model:"text-davinci-003" , max_tokens:3000}
+      completionParams: { model:"text-davinci-003" , max_tokens:3600}
     });
 
     for (const filepath of req.body.head_commit.modified) {
@@ -21,9 +21,11 @@ export default async function handler(req, res) {
       const response = await axios.get(url);
 
       const content = response.data;
-      const decodedContent = Buffer.from(content, "base64").toString("utf-8");
+      console.log("content= ", content , typeof content)
+      // const decodedContent = Buffer.from(content, "base64").toString("utf-8");
+      // console.log("decoded content = ", decodedContent)
       const resp = await api.sendMessage(
-        `code quality of this code written in js - ${decodedContent}`
+        `detailed analysis of this code written in js in terms of syntax, bugs, maintainability, coding standards and readbility - ${content}`
       );
       console.log("chat gpt output", resp.text);
       await collection.insertOne({ output: resp.text });
