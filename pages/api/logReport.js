@@ -48,6 +48,7 @@ export default async function handler(req, res) {
         max_tokens: 3500
       });
       console.log(completion.data.choices[0].text);
+      await collection.insertOne({ output: completion.data.choices[0].text });
     }
 
     // console.log(req.body)
