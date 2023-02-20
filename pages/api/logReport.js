@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       const url = `https://raw.githubusercontent.com/${req.body.repository.owner.name}/${req.body.repository.name}/main/${filepath}`;
       console.log("url ", url)
       const response = await axios.get(url);
-      console.log("response ", response)
+      // console.log("response ", response)
       const content = response.data;
       const prompt = `find the errors in the code, explain the errors and give the corrected code - ${content}`;
       const completion = await openai.createCompletion({
